@@ -263,8 +263,8 @@ public class SectionAActivity extends Activity {
     @BindView(R.id.mp02_count)
     TextView mp02_count;
 
-    @BindView(R.id.checkMembers)
-    Button checkMembers;
+/*    @BindView(R.id.checkMembers)
+    Button checkMembers;*/
 
     @BindView(R.id.checkDSSID)
     Button checkDSSID;
@@ -476,7 +476,7 @@ public class SectionAActivity extends Activity {
     }
 
 
-    @OnClick(R.id.checkMembers)
+/*    @OnClick(R.id.checkMembers)
     void onBtnCheckMemberClick() {
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -513,7 +513,7 @@ public class SectionAActivity extends Activity {
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
 
-    }
+    }*/
 
     @OnClick(R.id.checkDSSID)
     void onBtnDSSIDClick() {
@@ -524,7 +524,7 @@ public class SectionAActivity extends Activity {
         if (!dca03.getText().toString().isEmpty()) {
             dca03.setError(null);
             members = db.getMembersByDSS(dca03.getText().toString().toUpperCase());
-            mp02_count.setText(members.size() + " members found.");
+            mp02_count.setText("Member Found.");
 
             if (members.size() != 0) {
 

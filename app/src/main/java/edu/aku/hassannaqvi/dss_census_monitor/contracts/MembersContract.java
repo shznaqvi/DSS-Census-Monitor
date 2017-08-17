@@ -249,10 +249,10 @@ public class MembersContract {
 
     public MembersContract Sync(JSONObject jsonObject) throws JSONException {
 
-        this._ID= jsonObject.getString(singleMember.COLUMN_ID);
-        this._DATE = jsonObject.getString(singleMember.COLUMN_DATE);
+/*        this._ID= jsonObject.getString(singleMember.COLUMN_ID);
+        this._DATE = jsonObject.getString(singleMember.COLUMN_DATE);*/
         this.dss_id_hh= jsonObject.getString(singleMember.COLUMN_DSS_ID_HH);
-        this.dss_id_f= jsonObject.getString(singleMember.COLUMN_DSS_ID_F);
+/*        this.dss_id_f= jsonObject.getString(singleMember.COLUMN_DSS_ID_F);
         this.dss_id_m= jsonObject.getString(singleMember.COLUMN_DSS_ID_M);
         this.dss_id_h= jsonObject.getString(singleMember.COLUMN_DSS_ID_H);
         this.dss_id_member= jsonObject.getString(singleMember.COLUMN_DSS_ID_MEMBER);
@@ -270,7 +270,7 @@ public class MembersContract {
         this.m_status= jsonObject.getString(singleMember.COLUMN_M_STATUS);
         this.education= jsonObject.getString(singleMember.COLUMN_EDUCATION);
         this.occupation= jsonObject.getString(singleMember.COLUMN_OCCUPATION);
-        this.member_type= jsonObject.getString(singleMember.COLUMN_MEMBER_TYPE);
+        this.member_type= jsonObject.getString(singleMember.COLUMN_MEMBER_TYPE);*/
 
         return this;
 
@@ -278,10 +278,10 @@ public class MembersContract {
 
     public MembersContract Hydrate(Cursor cursor) {
 
-        this._ID = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_ID));
-        this._DATE = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_DATE));
+        /*this._ID = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_ID));
+        this._DATE = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_DATE));*/
         this.dss_id_hh = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_DSS_ID_HH));
-        this.dss_id_f = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_DSS_ID_F));
+/*        this.dss_id_f = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_DSS_ID_F));
         this.dss_id_m = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_DSS_ID_M));
         this.dss_id_h = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_DSS_ID_H));
         this.dss_id_member = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_DSS_ID_MEMBER));
@@ -299,7 +299,7 @@ public class MembersContract {
         this.m_status = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_M_STATUS));
         this.education = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_EDUCATION));
         this.occupation = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_OCCUPATION));
-        this.member_type = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_MEMBER_TYPE));
+        this.member_type = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_MEMBER_TYPE));*/
 
         return this;
 
@@ -365,7 +365,7 @@ public class MembersContract {
         public static final String COLUMN_OCCUPATION = "occupation";
         public static final String COLUMN_MEMBER_TYPE = "member_type";
 
-        public static final String _URI = "getfamilymembers.php";
+        public static final String _URI = "gethouseholds.php";
 
     }
 }

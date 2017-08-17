@@ -213,7 +213,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
-                android:onClick="openL"
                 android:text="Section L" />
 
             <Button
