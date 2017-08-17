@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
 
         ButterKnife.bind(this);
 
-        lblheader.setText("Welcome! You're assigned to block ' " + MainApp.regionDss + " '" + MainApp.userName);
+        lblheader.setText("Welcome! You're assigned to block ' " + MainApp.regionDss + " '");
 
         if (MainApp.admin) {
             adminsec.setVisibility(View.VISIBLE);
