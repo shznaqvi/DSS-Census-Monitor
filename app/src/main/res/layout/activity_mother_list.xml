@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    tools:context="edu.aku.hassannaqvi.dss_census_monitor.activities.MotherListActivity">
+
+    <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--android:id="@+id/scrollView01"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:scrollbars="horizontal"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--tools:context="edu.aku.hassannaqvi.dss_census.activities.MotherListActivity">-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="Screened Mother List"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/lblNoMother"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="No Mother Found"
+                android:background="@color/dullBlack"
+                android:textSize="20sp" />
+
+            <ListView
+                android:id="@+id/motherList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_End"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30dp"
+                    android:background="@color/pink_100"
+                    android:onClick="endInterview"
+                    android:text="@string/end_interview"
+                    android:textColor="#ff1e1e"/>
+
+
+                <!--<Button-->
+                    <!--android:id="@+id/btn_continue"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_margin="30dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:background="@color/pink_100"-->
+                    <!--android:onClick="nextSection"-->
+                    <!--android:text="@string/nextSection"-->
+                    <!--android:textColor="#1ed61e"/>-->
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <!--</ScrollView>-->
+
+
+</RelativeLayout>
