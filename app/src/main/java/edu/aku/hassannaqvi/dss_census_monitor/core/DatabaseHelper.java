@@ -990,6 +990,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 MotherTB.COLUMN_ID,
+                MotherTB.COLUMN_PROJECT_NAME,
                 MotherTB.COLUMN_UID,
                 MotherTB.COLUMN_UUID,
                 MotherTB.COLUMN_FORMDATE,
@@ -1046,6 +1047,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 singleIm.COLUMN_ID,
+                singleIm.COLUMN_PROJECT_NAME,
                 singleIm.COLUMN_UUID,
                 singleIm.COLUMN_UID,
                 singleIm.COLUMN_SK,
@@ -1098,6 +1100,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 censusMember.COLUMN_ID,
+                censusMember.COLUMN_PROJECT_NAME,
                 censusMember.COLUMN_REF_ID,
                 censusMember.COLUMN_ISTATUS,
                 censusMember.COLUMN_UID,
@@ -1177,6 +1180,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
+                FormsTable.COLUMN_PROJECT_NAME,
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_IS_NEW,
                 FormsTable.COLUMN_DSSID,

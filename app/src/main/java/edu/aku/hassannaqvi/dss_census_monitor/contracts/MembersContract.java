@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class MembersContract {
 
-    private final String projectName = "DSS Census";
+    private final String projectName = "DSS MONITOR APP";
     private String _ID = "";
     private String _DATE = "";
     private String dss_id_hh = "";

@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class MotherContract {
 
-    private final String projectName = "DSS Census";
+    private final String projectName = "DSS MONITOR APP";
     private String _ID = "";
     private String UID = "";
     private String _UUID = "";
