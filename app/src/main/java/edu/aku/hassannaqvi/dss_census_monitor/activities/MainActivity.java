@@ -325,8 +325,8 @@ public class MainActivity extends Activity {
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
-//            Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
-//            new SyncForms(this).execute();
+            Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
+            new SyncForms(this).execute();
 
 /*            Toast.makeText(getApplicationContext(), "Syncing Census", Toast.LENGTH_SHORT).show();
             new SyncCensus(this).execute();
@@ -337,8 +337,8 @@ public class MainActivity extends Activity {
 //            Toast.makeText(getApplicationContext(), "Syncing Mother", Toast.LENGTH_SHORT).show();
 //            new SyncMother(this).execute();
 
-//            Toast.makeText(getApplicationContext(), "Syncing IM", Toast.LENGTH_SHORT).show();
-//            new SyncIM(this).execute();
+            Toast.makeText(getApplicationContext(), "Syncing IM", Toast.LENGTH_SHORT).show();
+            new SyncIM(this).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();
