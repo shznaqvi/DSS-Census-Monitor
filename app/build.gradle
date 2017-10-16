@@ -22,7 +22,7 @@ android {
             targetSdkVersion 22
 
             versionCode code
-            versionName "1.3b"
+            versionName "2.7b"
             testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         }
     } else {
