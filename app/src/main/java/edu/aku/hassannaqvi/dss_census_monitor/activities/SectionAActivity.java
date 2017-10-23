@@ -524,7 +524,7 @@ public class SectionAActivity extends Activity {
         if (!dca03.getText().toString().isEmpty()) {
             dca03.setError(null);
             members = db.getMembersByDSS(dca03.getText().toString().toUpperCase());
-            mp02_count.setText("Member Found.");
+            mp02_count.setText(members.size() + " Members Found.");
 
             if (members.size() != 0) {
 
