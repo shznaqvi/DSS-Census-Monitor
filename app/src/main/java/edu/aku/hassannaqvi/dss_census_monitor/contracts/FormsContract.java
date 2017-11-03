@@ -16,6 +16,7 @@ public class FormsContract {
     //private final String surveyType = "SN";
     private String _ID = "";
     private String _UID = "";
+    private String UUID = "";
     private String ISNEW = "";
     private String DSSID = "";
     private String formDate = ""; // Date
@@ -55,6 +56,7 @@ public class FormsContract {
     public FormsContract Sync(JSONObject jsonObject) throws JSONException {
         this._ID = jsonObject.getString(FormsTable.COLUMN_ID);
         this._UID = jsonObject.getString(FormsTable.COLUMN_UID);
+        this.UUID = jsonObject.getString(FormsTable.COLUMN_UUID);
         this.ISNEW = jsonObject.getString(FormsTable.COLUMN_IS_NEW);
         this.DSSID = jsonObject.getString(FormsTable.COLUMN_DSSID);
         this.formDate = jsonObject.getString(FormsTable.COLUMN_FORMDATE);
@@ -87,6 +89,7 @@ public class FormsContract {
     public FormsContract Hydrate(Cursor cursor) {
         this._ID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ID));
         this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
+        this.UUID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UUID));
         this.ISNEW = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_IS_NEW));
         this.DSSID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DSSID));
         this.formDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
@@ -123,6 +126,7 @@ public class FormsContract {
 
         json.put(FormsTable.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(FormsTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
+        json.put(FormsTable.COLUMN_UUID, this.UUID == null ? JSONObject.NULL : this.UUID);
         json.put(FormsTable.COLUMN_IS_NEW, this.ISNEW == null ? JSONObject.NULL : this.ISNEW);
         json.put(FormsTable.COLUMN_DSSID, this.DSSID == null ? JSONObject.NULL : this.DSSID);
         json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
@@ -148,6 +152,14 @@ public class FormsContract {
 
 
         return json;
+    }
+
+    public String getUUID() {
+        return UUID;
+    }
+
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
     }
 
     public String getProjectName() {
@@ -369,6 +381,7 @@ public class FormsContract {
         public static final String COLUMN_PROJECT_NAME = "projectname";
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
+        public static final String COLUMN_UUID = "uuid";
         public static final String COLUMN_IS_NEW = "isnew";
         public static final String COLUMN_DSSID = "dssid";
         public static final String COLUMN_FORMDATE = "formdate";

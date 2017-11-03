@@ -476,7 +476,7 @@ public class SectionAActivity extends Activity {
     }
 
 
-/*    @OnClick(R.id.checkMembers)
+    @OnClick(R.id.checkMembers)
     void onBtnCheckMemberClick() {
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -513,7 +513,7 @@ public class SectionAActivity extends Activity {
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
 
-    }*/
+    }
 
     @OnClick(R.id.checkDSSID)
     void onBtnDSSIDClick() {
@@ -534,7 +534,7 @@ public class SectionAActivity extends Activity {
                     MainApp.familyMembersList.add(new MembersContract(ec));
                 }
 
-                Toast.makeText(this, "Members Found", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, members.size() + "Members Found", Toast.LENGTH_LONG).show();
                 MainApp.currentStatusCount = MainApp.familyMembersList.size();
                 MainApp.TotalMembersCount = MainApp.familyMembersList.size();
                 isNew = false;
@@ -1027,6 +1027,7 @@ public class SectionAActivity extends Activity {
         MainApp.fc = new FormsContract();
 
         MainApp.fc.setDevicetagID(sharedPref.getString("tagName", null));
+        MainApp.fc.setUUID(MainApp.familyMembersList.get(0).getUuid());
         MainApp.fc.setDSSID(dca03.getText().toString().toUpperCase());
         MainApp.fc.setFormDate(dtToday);
         MainApp.fc.setUser(MainApp.userName);

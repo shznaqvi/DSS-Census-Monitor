@@ -48,7 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleUser.ROW_PASSWORD + " TEXT,"
             + singleUser.FULL_NAME + " TEXT,"
             + singleUser.REGION_DSS + " TEXT );";
-    public static final String DATABASE_NAME = "dss-census.db";
+    public static final String DATABASE_NAME = "dss-census_monitor.db";
     public static final String DB_NAME = "dss-census_monitor_copy.db";
     private static final int DATABASE_VERSION = 1;
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
@@ -56,6 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + FormsTable.COLUMN_PROJECT_NAME + " TEXT,"
             + FormsTable.COLUMN_UID + " TEXT," +
+            FormsTable.COLUMN_UUID + " TEXT," +
             FormsTable.COLUMN_IS_NEW + " TEXT," +
             FormsTable.COLUMN_DSSID + " TEXT," +
             FormsTable.COLUMN_FORMDATE + " TEXT," +
@@ -148,6 +149,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleMember.TABLE_NAME + "("
             + singleMember.COLUMN_ID + " TEXT," +
             singleMember.COLUMN_DATE + " TEXT," +
+            singleMember.COLUMN_UUID + " TEXT," +
             singleMember.COLUMN_DSS_ID_HH + " TEXT," +
             singleMember.COLUMN_DSS_ID_F + " TEXT," +
             singleMember.COLUMN_DSS_ID_M + " TEXT," +
@@ -313,28 +315,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 member.Sync(jsonObjectMember);
                 ContentValues values = new ContentValues();
 
-/*                values.put(singleMember.COLUMN_ID, member.get_ID());
+                values.put(singleMember.COLUMN_ID, member.get_ID());
                 values.put(singleMember.COLUMN_DSS_ID_MEMBER, member.getDss_id_member());
-                values.put(singleMember.COLUMN_DATE, member.get_DATE());*/
+                values.put(singleMember.COLUMN_DATE, member.get_DATE());
+                values.put(singleMember.COLUMN_UUID, member.getUuid());
                 values.put(singleMember.COLUMN_DSS_ID_HH, member.getDss_id_hh());
-                /*values.put(singleMember.COLUMN_DSS_ID_F, member.getDss_id_f());
+                values.put(singleMember.COLUMN_DSS_ID_F, member.getDss_id_f());
                 values.put(singleMember.COLUMN_DSS_ID_M, member.getDss_id_m());
                 values.put(singleMember.COLUMN_DSS_ID_H, member.getDss_id_h());
                 values.put(singleMember.COLUMN_PREVS_DSS_ID_MEMBER, member.getPrevs_dss_id_member());
                 values.put(singleMember.COLUMN_SITE_CODE, member.getSite_code());
                 values.put(singleMember.COLUMN_NAME, member.getName());
                 values.put(singleMember.COLUMN_DOB, member.getDob());
-                values.put(singleMember.COLUMN_AGE, member.getAge());
+//                values.put(singleMember.COLUMN_AGE, member.getAge());
                 values.put(singleMember.COLUMN_GENDER, member.getGender());
                 values.put(singleMember.COLUMN_IS_HEAD, member.getIs_head());
                 values.put(singleMember.COLUMN_RELATION_HH, member.getRelation_hh());
                 values.put(singleMember.COLUMN_CURRENT_STATUS, member.getCurrent_status());
-                values.put(singleMember.COLUMN_CURRENT_DATE, member.getCurrent_date());
+//                values.put(singleMember.COLUMN_CURRENT_DATE, member.getCurrent_date());
                 values.put(singleMember.COLUMN_DOD, member.getDod());
                 values.put(singleMember.COLUMN_M_STATUS, member.getM_status());
                 values.put(singleMember.COLUMN_EDUCATION, member.getEducation());
                 values.put(singleMember.COLUMN_OCCUPATION, member.getOccupation());
-                values.put(singleMember.COLUMN_MEMBER_TYPE, member.getMember_type());*/
+                values.put(singleMember.COLUMN_MEMBER_TYPE, member.getMember_type());
 
                 db.insert(singleMember.TABLE_NAME, null, values);
             }
@@ -393,10 +396,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-//                singleMember.COLUMN_ID,
-//                singleMember.COLUMN_DATE,
+                singleMember.COLUMN_ID,
+                singleMember.COLUMN_DATE,
+                singleMember.COLUMN_UUID,
                 singleMember.COLUMN_DSS_ID_HH,
-/*                singleMember.COLUMN_DSS_ID_F,
+                singleMember.COLUMN_DSS_ID_F,
                 singleMember.COLUMN_DSS_ID_M,
                 singleMember.COLUMN_DSS_ID_H,
                 singleMember.COLUMN_DSS_ID_MEMBER,
@@ -404,17 +408,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleMember.COLUMN_SITE_CODE,
                 singleMember.COLUMN_NAME,
                 singleMember.COLUMN_DOB,
-                singleMember.COLUMN_AGE,
+//                singleMember.COLUMN_AGE,
                 singleMember.COLUMN_GENDER,
                 singleMember.COLUMN_IS_HEAD,
                 singleMember.COLUMN_RELATION_HH,
                 singleMember.COLUMN_CURRENT_STATUS,
-                singleMember.COLUMN_CURRENT_DATE,
+//                singleMember.COLUMN_CURRENT_DATE,
                 singleMember.COLUMN_DOD,
                 singleMember.COLUMN_M_STATUS,
                 singleMember.COLUMN_EDUCATION,
                 singleMember.COLUMN_OCCUPATION,
-                singleMember.COLUMN_MEMBER_TYPE,*/
+                singleMember.COLUMN_MEMBER_TYPE,
         };
 
         String whereClause = singleMember.COLUMN_DSS_ID_HH + " = ?";
@@ -533,6 +537,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_PROJECT_NAME, fc.getProjectName());
         values.put(FormsTable.COLUMN_UID, fc.getUID());
+        values.put(FormsTable.COLUMN_UUID, fc.getUUID());
         values.put(FormsTable.COLUMN_IS_NEW, fc.getISNEW());
         values.put(FormsTable.COLUMN_DSSID, fc.getDSSID());
         values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
@@ -926,6 +931,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = {
                 FormsTable._ID,
                 FormsTable.COLUMN_UID,
+                FormsTable.COLUMN_UUID,
                 FormsTable.COLUMN_IS_NEW,
                 FormsTable.COLUMN_DSSID,
                 FormsTable.COLUMN_FORMDATE,
@@ -1182,6 +1188,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable._ID,
                 FormsTable.COLUMN_PROJECT_NAME,
                 FormsTable.COLUMN_UID,
+                FormsTable.COLUMN_UUID,
                 FormsTable.COLUMN_IS_NEW,
                 FormsTable.COLUMN_DSSID,
                 FormsTable.COLUMN_FORMDATE,
