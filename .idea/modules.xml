@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DSS-Census-Monitor.iml" filepath="$PROJECT_DIR$/DSS-Census-Monitor.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DSS-Census-MonitorApp.iml" filepath="$PROJECT_DIR$/DSS-Census-MonitorApp.iml" />
+      <module fileurl="file://E:\Hassan\Android\DSS-Census-Monitor\DSS-Census-MonitorApp.iml" filepath="E:\Hassan\Android\DSS-Census-Monitor\DSS-Census-MonitorApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
