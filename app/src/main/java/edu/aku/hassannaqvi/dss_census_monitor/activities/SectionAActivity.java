@@ -620,7 +620,8 @@ public class SectionAActivity extends Activity {
             dca03.setError(null);
         }
 
-        if (!dca03.getText().toString().substring(0, MainApp.regionDss.length()).toUpperCase().equals(MainApp.regionDss)) {
+        if (!dca03.getText().toString().substring(0, MainApp.regionDss.length() - 4).toUpperCase().equals(MainApp.regionDss.substring(0, 2)) &&
+                !dca03.getText().toString().substring(5, MainApp.regionDss.length()).toUpperCase().equals(MainApp.regionDss.substring(5, 6))) {
             Toast.makeText(this, dca03.getText().toString().substring(0, MainApp.regionDss.length()).toUpperCase() + "-" + MainApp.regionDss, Toast.LENGTH_SHORT).show();
             Toast.makeText(this, "ERROR(not matched): " + getString(R.string.dca03), Toast.LENGTH_LONG).show();
             dca03.setError("Did not match your block!");    // Set Error on last radio button
