@@ -99,7 +99,7 @@ public class SectionDActivity extends Activity {
 //        end_intent.putExtra("check", false);
 //        startActivity(end_intent);
 
-        MainApp.endActivity(this,this);
+        MainApp.endActivity(this, this);
     }
 
     @OnClick(R.id.btn_Continue)
@@ -201,7 +201,11 @@ public class SectionDActivity extends Activity {
         // Radio Group
 
 
-        sD.put("dcd01", dcd0101.isChecked() ? "1" : dcd0102.isChecked() ? "2" : "0");
+        sD.put("dcd01", dcd0101.isChecked() ? "1" : dcd0102.isChecked() ? "2"
+                : dcd0103.isChecked() ? "3" : dcd0104.isChecked() ? "4" : "0");
+
+        sD.put("dcd06", dcd0601.isChecked() ? "1" : dcd0602.isChecked() ? "2"
+                : dcd0603.isChecked() ? "3" : "0");
 
 //        10
         sD.put("dcd13", dcd1301.isChecked() ? "1" : dcd1302.isChecked() ? "2" : dcd1303.isChecked() ? "3"
