@@ -966,7 +966,7 @@ public class SectionAActivity extends Activity {
 
             if (dca0902.isChecked()) {
 
-                if (dca10a.getText().toString().isEmpty()) {
+                if (dca10a.getText().toString().trim().isEmpty()) {
                     Toast.makeText(this, "ERROR(empty): " + getString(R.string.dca10a), Toast.LENGTH_SHORT).show();
                     dca10a.setError("This data is Required!");    // Set Error on last radio button
 
@@ -977,7 +977,7 @@ public class SectionAActivity extends Activity {
                 }
 
 //        18
-                if (dca10b.getText().toString().isEmpty()) {
+                if (dca10b.getText().toString().trim().isEmpty()) {
                     Toast.makeText(this, "ERROR(empty): " + getString(R.string.dca10b), Toast.LENGTH_SHORT).show();
                     dca10b.setError("This data is Required!");    // Set Error on last radio button
 
@@ -998,7 +998,7 @@ public class SectionAActivity extends Activity {
                     dca09m.setError(null);
                 }
 
-                if ((Integer.parseInt(dca09m.getText().toString()) < 0) || (Integer.parseInt(dca09m.getText().toString())) > 11) {
+                if (Integer.valueOf(dca09m.getText().toString()) > 11) {
                     Toast.makeText(this, "ERROR(Range): " + getString(R.string.dca09m), Toast.LENGTH_SHORT).show();
                     dca09m.setError("Range is 0 - 11 months");    // Set Error on last radio button
                     return false;
