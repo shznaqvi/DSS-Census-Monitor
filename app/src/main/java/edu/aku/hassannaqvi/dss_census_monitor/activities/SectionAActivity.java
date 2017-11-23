@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -260,6 +262,9 @@ public class SectionAActivity extends Activity {
     @BindView(R.id.fldGrpdca10)
     LinearLayout fldGrpdca10;
 
+    @BindView(R.id.fldGrpCheck)
+    LinearLayout fldGrpCheck;
+
     @BindView(R.id.mp02_count)
     TextView mp02_count;
 
@@ -446,6 +451,29 @@ public class SectionAActivity extends Activity {
                 }
             }
         });*/
+
+
+        dca03.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                fldGrpCheck.setVisibility(View.GONE);
+
+//                Toast.makeText(getApplicationContext(), "Click on CHECK MEMBER button", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
     }
 
     @OnClick(R.id.btn_End)
@@ -482,21 +510,13 @@ public class SectionAActivity extends Activity {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         String member = "";
-        if (dca03.getText().toString().length() > 9) {
-            members = db.getMembersByDSS(dca03.getText().toString().toUpperCase());
-            if (members.size() > 0) {
-                int count = 0;
-                for (MembersContract m : members) {
-                    member += (++count) + ")\t " + m.getName() + " \t- \t" +
-                            (m.getMember_type().equals("mw") ? "(Married Women)" :
-                                    m.getMember_type().equals("h") ? "(Husband)" : "(Child)") + "\n";
 
-                }
-            } else {
-                member = "No member registered for this DSSID \r\n\r\n\t\"" + dca03.getText().toString() + "\"";
-            }
-        } else {
-            member = "Invalid DSS ID: " + dca03.getText().toString().toString();
+        int count = 0;
+        for (MembersContract m : members) {
+            member += (++count) + ")\t " + m.getName() + " \t- \t" +
+                    (m.getMember_type().equals("mw") ? "(Married Women)" :
+                            m.getMember_type().equals("h") ? "(Husband)" : "(Child)") + "\n";
+
         }
 
         alertDialogBuilder.setIcon(R.drawable.ic_warning_black_24dp)
@@ -519,7 +539,6 @@ public class SectionAActivity extends Activity {
     void onBtnDSSIDClick() {
 
         membersExists.setVisibility(View.VISIBLE);
-        MainApp.familyMembersList = new ArrayList<>();
 
         if (!dca03.getText().toString().isEmpty()) {
             dca03.setError(null);
@@ -527,7 +546,6 @@ public class SectionAActivity extends Activity {
             mp02_count.setText(members.size() + " Members Found.");
 
             if (members.size() != 0) {
-
 
                 for (MembersContract ec : members) {
 
@@ -539,10 +557,13 @@ public class SectionAActivity extends Activity {
                 MainApp.TotalMembersCount = MainApp.familyMembersList.size();
                 isNew = false;
 
-            } else {
+                fldGrpCheck.setVisibility(View.VISIBLE);
 
+            } else {
                 isNew = true;
                 Toast.makeText(this, "No Members Found", Toast.LENGTH_LONG).show();
+
+                fldGrpCheck.setVisibility(View.GONE);
             }
         } else {
             dca03.setError("This data is Required!");
@@ -572,7 +593,8 @@ public class SectionAActivity extends Activity {
                 MainApp.totalChild = Integer.parseInt(dca0801.getText().toString());
                 MainApp.NoBoyCount = Integer.parseInt(dca0802.getText().toString());
                 MainApp.NoGirlCount = Integer.parseInt(dca0803.getText().toString());
-                MainApp.familyMembersList = new ArrayList<>();
+
+                /*MainApp.familyMembersList = new ArrayList<>();
 
                 members = db.getMembersByDSS(dca03.getText().toString().toUpperCase());
                 if (members.size() != 0) {
@@ -591,7 +613,7 @@ public class SectionAActivity extends Activity {
 
                     isNew = true;
                     Toast.makeText(this, "No Members Found", Toast.LENGTH_LONG).show();
-                }
+                }*/
                 startActivity(new Intent(this, SectionDActivity.class));
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
